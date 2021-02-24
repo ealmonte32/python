@@ -9,6 +9,11 @@ import time
 # so that when the coin gets flipped and lands for example as heads
 # the heads function gets called and prints out exactly what you write inside it
 # below are both functions for heads and tails which we can then call later on
+# the backslash is an escape character so this is why you see a bunch of them
+# instead of one where you would want it to show, in order to output an actual
+# backslash in some programming languages, you have to put two of them instead
+
+print('("")')
 
 def coin_heads():
     print(
@@ -99,13 +104,13 @@ while balance > 0:
     print("\nAcceptable answers are: head, heads, tail, tails, or stop to exit the game.")
     answer = input("Type your answer and press enter: ")
 
-    # a way to compare the typed anwser to a string is to put ' ' around the word
+    # a way to compare the entered answer is by comparing to strings
     # we assign the word head/heads to equal the number 1 and tail/tails to 2
-    if answer == 'heads' or answer == 'head':
+    if answer == "heads" or answer == "head":
         answer = 1
-    elif answer == 'tails' or answer == 'tail':
+    elif answer == "tails" or answer == "tail":
         answer = 2
-    elif answer == 'stop':
+    elif answer == "stop":
         break
     else:
         # if none of the conditions above are met, we know the user did not enter one
