@@ -3,6 +3,78 @@
 
 import sys
 import random
+import time
+
+
+# we have to define a function that draws on the screen the coin/quarter
+# so that when the coin gets flipped and lands for example as heads
+# the heads function gets called and prints out exactly what you write inside it
+# below are both functions for heads and tails which we can then call later on
+
+def coin_heads():
+    print(
+'''
+        _.-'~~`~~'-._
+     . `  B   E   R  `.
+    / I               T '
+  /`       .-'~"-.       `
+ ; L      / `-    \      Y ;
+|        />  `.  -.|        |
+|       /_     '-.__)       |
+|        |-  _.' \ |        |
+;        `~~;     \\        ;
+ ;          /      \\)P    ;
+  \        '.___.-'`"     /
+   `\                   /`
+     '._   H E A D S _.'
+        `'-..,,,..-'`
+
+'''
+)
+
+def coin_tails():
+    print(
+'''
+        _.-'~~`~~'-._
+     .` T E D   S T A`.
+    / I              T `
+  /`N        <O         E`
+ ; U   /-\___/ \___/-\   S `
+|     /               \     |
+|   /                   \   |
+|  |     |    Y     |    |  |
+;   \   | \__{ }___/ |  /   ;
+ ;   ` /     M M      \'   ;
+  \        ~~~~~~~        /
+   `\                   /`
+     '._T  A  I  L  S_.'
+        `'-..,,,..-'`
+
+'''
+)
+
+
+# now we need to make a function that shows a coin being flipped in the air
+# so we make something that changes every millisecond from a circle to a line
+# just like what a coin being flipped in the air looks like
+
+# msg is what we want to display when we call this function
+# n_chars means how many characters we want to see at the same time displayed
+# i chose 1 because it makes it look like the coin was flipped in the air as it moves
+def scrolling_coin_flip(msg, n_chars):
+    len_msg = len(msg) #the length of the message is equal to total letters we write ex: OO00||
+    counter = 0
+    while counter < 25: #the 25 just means how many characters we want to show during flip
+        displayed = ""
+
+        #this is a "for" loop
+        for loop in range(n_chars):
+            displayed += msg[(counter+loop)%len_msg]
+        print(f"\n{displayed}", end="")
+        time.sleep(0.04) #the time before each letter shows
+        counter = (counter + 1) #we increase the counter during every loop so it gets to 25
+    return
+
 
 # this would be our initial money balance of 5 dollars
 balance = int(5)
@@ -41,11 +113,14 @@ while balance > 0:
     # this below assigns the variable coin a random number (integer) from 1 to 2
     # since a coin has two sides, I simply make heads=1 and tails=2 (shown above)
     coin = random.randint(1,2) # this line executes the "coin flip"
+    scrolling_coin_flip("OO00||00OO", 1)
 
     if coin == 1:
         print("The coin landed on heads.")
+        coin_heads()
     if coin == 2:
         print("The coin landed on tails.")
+        coin_tails()
 
     # this is where we compare the result of the random integer that was assigned to coin
     # to the answer that you typed in
