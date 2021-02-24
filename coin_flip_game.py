@@ -17,13 +17,13 @@ def coin_heads():
         _.-'~~`~~'-._
      . `  B   E   R  `.
     / I               T '
-  /`       .-'~"-.       `
+  /`       .-'~"-.       `\\
  ; L      / `-    \      Y ;
 |        />  `.  -.|        |
-|       /_     '-.__)       |
+|       /_     '@-._)       |
 |        |-  _.' \ |        |
-;        `~~;     \\        ;
- ;          /      \\)P    ;
+;        `~~;     \\\\        ;
+ ;          /      \\\\))    ;
   \        '.___.-'`"     /
    `\                   /`
      '._   H E A D S _.'
@@ -37,17 +37,17 @@ def coin_tails():
 '''
         _.-'~~`~~'-._
      .` T E D   S T A`.
-    / I              T `
-  /`N        <O         E`
- ; U   /-\___/ \___/-\   S `
-|     /               \     |
-|   /                   \   |
-|  |     |    Y     |    |  |
-;   \   | \__{ }___/ |  /   ;
- ;   ` /     M M      \'   ;
+    / I               T`\\
+  /`N        <@)        E \\
+ ; U   /-\___/ \___/-\   S ;
+|     //             \\\\     |
+|   ////  \       /  \\\\\\\\   |
+|  ||||||           ||||||  |
+;   \   | \__{|}___/ |  /   ;
+ ;   ` /     /|\      \\'   ;
   \        ~~~~~~~        /
    `\                   /`
-     '._T  A  I  L  S_.'
+     '. T  A  I  L  S .'
         `'-..,,,..-'`
 
 '''
@@ -79,10 +79,10 @@ def scrolling_coin_flip(msg, n_chars):
 # this would be our initial money balance of 5 dollars
 balance = int(5)
 
-print("\n**************************************")
-print("\nGAME TITLE: Coin Flip Casino! - $1 per play")
-print("Guess whether the coin will land on heads or tails.")
-print("You have a balance of $" + str(balance) + " dollars.")
+print("\n***************************************")
+print("\n GAME: Coin Flip Casino! - $1 per play")
+print(" Guess whether the coin will land on heads or tails.")
+print(" You have a balance of $" + str(balance) + " dollars.")
 # the reason for converting the balance to a string is because
 # if we want to concatenate we use the + sign but the variables need to be
 # of the same type, so the words are strings, while the balance is originally
@@ -93,21 +93,28 @@ print("You have a balance of $" + str(balance) + " dollars.")
 # we begin the game by running a while loop that continues until you run out of money
 # notice we have to indent after the while loop and then after the if statement..
 
-# we let the player know what the possible typed answers are
-print("\nAcceptable answers are: head, heads, tail, tails, or stop to exit the game.")
-
 while balance > 0:
-    print("\nThe dealer just flipped a coin, guess the outcome!\n")
+    print("\n\nThe dealer is about to flip a coin, guess the outcome!")
+    
+    # we let the player know what the possible typed answers are
+    print("\nAcceptable answers are: head, heads, tail, tails, or stop to exit the game.")
     answer = input("Type your answer and press enter: ")
 
     # a way to compare the typed anwser to a string is to put ' ' around the word
     # we assign the word head/heads to equal the number 1 and tail/tails to 2
     if answer == 'heads' or answer == 'head':
         answer = 1
-    if answer == 'tails' or answer == 'tail':
+    elif answer == 'tails' or answer == 'tail':
         answer = 2
-    if answer == 'stop':
+    elif answer == 'stop':
         break
+    else:
+        # if none of the conditions above are met, we know the user did not enter one
+        # of the accepted answers, so we restart the loop again after waiting 2.5 seconds
+        print("\n (Error: you did not enter an acceptable answer, please try again..)")
+        time.sleep(2.5)
+        continue
+
 
     # now we are assigning a value to the answer based on comparison
     # this below assigns the variable coin a random number (integer) from 1 to 2
@@ -116,10 +123,10 @@ while balance > 0:
     scrolling_coin_flip("OO00||00OO", 1)
 
     if coin == 1:
-        print("The coin landed on heads.")
+        print("\n The coin landed on heads.")
         coin_heads()
     if coin == 2:
-        print("The coin landed on tails.")
+        print("\n The coin landed on tails.")
         coin_tails()
 
     # this is where we compare the result of the random integer that was assigned to coin
@@ -132,4 +139,3 @@ while balance > 0:
         print("Sorry, you lose =[\n")
         balance = balance - 1
         print("Your current money balance is: $" + str(balance))
-
