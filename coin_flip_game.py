@@ -1,7 +1,6 @@
 # ealmonte32
 # coin flip game with money balance
 
-import sys
 import random
 import time
 
