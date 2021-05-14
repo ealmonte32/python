@@ -17,14 +17,15 @@ list_of_students = []
 list_of_faculty = []
 
 def student_function(variable1, variable2, variable3):
-  # these things that are under the function happen only when you
-  # call the function and give it the 3 variables it requires to run
+  # these things that are under the function happen only when you call the function
+  # and give it the 3 variables it requires to run, the append for list goes inside
+  # the brackets because we want all three variables to be part of the same entry on the list
   list_of_students.append([variable1, variable2, variable3])
-  print() # add empty spacing
+  print() # add blank line
 
 def faculty_function(variable1, variable2):
   list_of_faculty.append([variable1, variable2])
-  print() # add empty spacing
+  print() # add blank line
 
 def print_users_info():
   total_students = len(list_of_students)
@@ -35,18 +36,19 @@ def print_users_info():
     print("Student ID: ", list_of_students[i][0])
     print("Student Name: ", list_of_students[i][1])
     print("Major: ", list_of_students[i][2])
-    print()
+    print() # add blank line
 
   print("----- FACULTY -----")
   for i in range(0, total_faculty):
     print("Faculty Name: ", list_of_faculty[i][0])
     print("Faculty Job Description: ", list_of_faculty[i][1])
-    print()
+    print() # add blank line
 
 
 # now we run the loop to run the program
 while stop_program == 0:
-  print("University Users Management:\n") # \n just means put a new line after
+  print("University Users Management:\n")
+  print(date_variable)
   print("Enter (1) for Student Input")
   print("Enter (2) for Teacher Input")
   print("Enter (3) to Print Users info")
@@ -70,17 +72,17 @@ while stop_program == 0:
     # used as the student ID entry..
     student_function(student_id, student_name, student_major)
     print(" ..sending info to student list.. done.")
-    print() # add blank line for spacing
+    print() # add blank line
     
   elif choice == 2:
     faculty_name = input("Enter faculty name: ")
     faculty_job = input("Enter faculty job description: ")
     faculty_function(faculty_name, faculty_job)
     print("..sending info to faculty list.. done")
-    print() # add blank line for spacing
+    print() # add blank line
     
   elif choice == 3:
-    print() # blankline for spacing
+    print() # add blank line
     print_users_info()
     
   else:
